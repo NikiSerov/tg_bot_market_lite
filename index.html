@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Telegram Sales Bot</title>
+    <link rel="stylesheet" href="index.css">
+    </link>
+    <meta name="viewport" content="width=device-width">
+</head>
+
+<body class="body">
+    <div class="main">
+        <div class="header">
+            <h1 class="header-title">Корпуса ВРУ на базе ШНТ</h1>
+        </div>
+        <div class="cards-container"></div>
+    </div>
+    <div class="main"></div>
+    <div class="orderPage">
+        <div class="orderPage-head"><h1 class="orderPage-name">Ваш заказ</h1></div>
+        <div class="cart"></div>
+        <div class="form">
+            <div class="input-wrapper">
+                <label class="input-label" for="organization-name">Название организации</label>
+                <input class="input" name="organization-name" type="text" id="organization-name" required>
+            </div>
+            <div class="input-wrapper">
+                <label class="input-label" for="contact-name">Контактное лицо</label>
+                <input class="input" name="contact-name" type="text" id="contact-name" required>
+            </div>
+            <div class="input-wrapper">
+                <label class="input-label" for="contact-number">Контактный телефон</label>
+                <input class="input" name="contact-number" type="tel" id="contact-number" required>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
