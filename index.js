@@ -1,7 +1,12 @@
 let state = 'shop';
 
-const resp = await fetch(`http://127.0.0.1:8000/categories/1/products/`);
-const products = await resp.json();
+const getProducts = async () => {
+  const resp = await fetch(`http://127.0.0.1:8000/categories/1/products/`);
+  const products = await resp.json();
+  return products;
+};
+
+const products = getProducts();
 
 const createCardHTML = ({ id, name, price, description, image }) => {
   return `<div class="card" id="${id}">
