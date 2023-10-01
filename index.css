@@ -732,12 +732,12 @@ label {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid var(--tg-theme-secondary-bg-color);
+    border-bottom: 1px solid var(--tg-theme-hint-color);
     padding: 20px 10px;
 }
 
 .orderCard:first-child {
-    border-top: 1px solid var(--tg-theme-secondary-bg-color);
+    border-top: 1px solid var(--tg-theme-hint-color);
 }
 
 .orderCard-image-wrapper {
