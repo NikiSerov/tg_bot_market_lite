@@ -6,8 +6,6 @@ const getProducts = async () => {
   return products;
 };
 
-const products = getProducts();
-
 const createCardHTML = ({ id, name, price, description, image }) => {
   return `<div class="card" id="${id}">
     <div class="card-main">
@@ -39,6 +37,8 @@ const createOrderCardHTML = ({ id, name, price, image }) => {
 // LS - localStorage
 
 const setProductInLS = async (id) => {
+  const products = await getProducts();
+
   const product = products.find((product) => product.id === id);
   const ls = localStorage.getItem('cart');
 
@@ -144,6 +144,8 @@ const initTG = () => {
 };
 
 const initWebApp = async () => {
+  const products = await getProducts();
+
   const cardsContainer = document.querySelector('.cards-container');
 
   const cardsHTML = products.reduce((acc, cv) => {
