@@ -597,8 +597,8 @@ label {
 .card-image-wrapper {
     overflow: hidden;
     min-width: 100px;
-    width: 100px;
-    height: 100px;
+    width: 110px;
+    height: 110px;
     border-radius: 8px;
 }
 
@@ -628,8 +628,8 @@ label {
 
 .card-desc {
     font-size: 14px;
-    line-height: 1.25;
-    margin-bottom: 16px;
+    line-height: 1.4;
+    margin: 8px 0 16px;
 }
 
 .card-price {
