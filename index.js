@@ -1,6 +1,7 @@
 let state = 'shop';
 
-const baseUrl = `http://127.0.0.1:8000`;
+const resp = await fetch(`http://127.0.0.1:8000/categories/1/products/`);
+const products = await resp.json();
 
 const createCardHTML = ({ id, name, price, description, image }) => {
   return `<div class="card" id="${id}">
@@ -33,8 +34,6 @@ const createOrderCardHTML = ({ id, name, price, image }) => {
 // LS - localStorage
 
 const setProductInLS = async (id) => {
-  const resp = await fetch(`http://127.0.0.1:8000/categories/1/products/`);
-  const products = await resp.json();
   const product = products.find((product) => product.id === id);
   const ls = localStorage.getItem('cart');
 
@@ -141,8 +140,6 @@ const initTG = () => {
 
 const initWebApp = async () => {
   const cardsContainer = document.querySelector('.cards-container');
-  const resp = await fetch(`http://127.0.0.1:8000/categories/1/products/`);
-  const products = await resp.json();
 
   const cardsHTML = products.reduce((acc, cv) => {
     return acc + createCardHTML({ ...cv });
