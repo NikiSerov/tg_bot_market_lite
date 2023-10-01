@@ -20,7 +20,7 @@ const createCardHTML = ({ id, name, price, description, image }) => {
             <span class="card-price">от ${price}₽</span>
         </div>
     </div>
-    <p class="card-desc">${description}₽</p>
+    <p class="card-desc">${description}</p>
     <div class="card-foot">
         <button class="add-btn" data-id="${id}">Добавить</button>
     </div>
