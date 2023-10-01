@@ -62,7 +62,7 @@ const renderCart = async () => {
   const cart = document.querySelector('.cart');
   const productCart = JSON.parse(localStorage.getItem('cart'));
   const products = await getProducts();
-  const cartProducts = products.filter((product) => productCart.includes(product.id));
+  const cartProducts = products.filter((product) => productCart.includes(product.id.toString()));
   const orderCardsHTML = cartProducts.reduce((acc, cv) => {
     return acc + createOrderCardHTML({ ...cv });
   }, '');
