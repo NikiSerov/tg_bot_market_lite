@@ -551,6 +551,22 @@ label {
     flex-direction: column;
 }
 
+.loading {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading svg {
+    width: 48px;
+    height: 48px;
+}
+
+.loading svg circle {
+    fill: var(--tg-theme-text-color);
+}
+
 .header {
     display: flex;
     align-items: center;

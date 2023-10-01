@@ -1,8 +1,11 @@
 let state = 'shop';
+let isLoading = false;
 
 const getProducts = async () => {
-  const resp = await fetch(`http://127.0.0.1:8000/categories/1/products/`);
+  isLoading = true;
+  const resp = await fetch(`https://lite-bot-backend.vercel.app/categories/1/products/`);
   const products = await resp.json();
+  isLoading = false;
   return products;
 };
 
