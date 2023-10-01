@@ -40,31 +40,30 @@ const createOrderCardHTML = ({ id, name, price, image }) => {
 // LS - localStorage
 
 const setProductInLS = async (id) => {
-  const products = await getProducts();
-
-  const product = products.find((product) => product.id === id);
   const ls = localStorage.getItem('cart');
 
   if (ls) {
     const localCart = JSON.parse(ls);
-    const newLocalCart = JSON.stringify([...localCart, product]);
+    const newLocalCart = JSON.stringify([...localCart, id]);
     localStorage.setItem('cart', newLocalCart);
   } else {
-    const localCart = JSON.stringify([product]);
+    const localCart = JSON.stringify([id]);
     localStorage.setItem('cart', localCart);
   }
 };
 
 const removeProductFromLS = (id) => {
   const localCart = JSON.parse(localStorage.getItem('cart'));
-  const newLocalCart = localCart.filter((product) => product.id !== id);
+  const newLocalCart = localCart.filter((productId) => productId !== id);
   localStorage.setItem('cart', JSON.stringify(newLocalCart));
 };
 
-const renderCart = () => {
+const renderCart = async () => {
   const cart = document.querySelector('.cart');
   const productCart = JSON.parse(localStorage.getItem('cart'));
-  const orderCardsHTML = productCart.reduce((acc, cv) => {
+  const products = await getProducts();
+  const cartProducts = products.filter((product) => productCart.includes(product.id));
+  const orderCardsHTML = cartProducts.reduce((acc, cv) => {
     return acc + createOrderCardHTML({ ...cv });
   }, '');
   cart.innerHTML = orderCardsHTML;
@@ -102,13 +101,15 @@ const shopBtnHanlder = () => {
   Telegram.WebApp.HapticFeedback.impactOccurred('medium');
 };
 
-const orderBtnHandler = () => {
+const orderBtnHandler = async () => {
   const cart = JSON.parse(localStorage.getItem('cart'));
+  const products = await getProducts();
+  const cartProducts = products.filter((product) => cart.includes(product.id));
   const organiztionName = document.getElementById('organization-name').value;
   const contactName = document.getElementById('contact-name').value;
   const contactNumber = document.getElementById('contact-number').value;
   const data = {
-    cart,
+    cartProducts,
     organiztionName,
     contactName,
     contactNumber
